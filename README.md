@@ -1,39 +1,39 @@
-C++ Implementation of the Algorithms from book "Introduction to Algorithms"
+C++ Implementation of the Algorithms from book "Introduction to Algorithms"<br>
 https://en.wikipedia.org/wiki/Introduction_to_Algorithms
 
 Tests:
 
 Input test array size: 10000
 
-Elements amount: 10 000
-Test All Sorting Algorithms
+Elements amount: 10 000 <br>
+Test All Sorting Algorithms <br>
 
-QuickSort
-Array access count: 330 501
-Compare count: 157 566
-Time: 9
+QuickSort <br>
+Array access count: 330 501 <br>
+Compare count: 157 566 <br>
+Time: 9 <br>
 
-MergeSort
-Array access count: 518 082
-Compare count: 120 425
-Time: 15
+MergeSort <br>
+Array access count: 518 082 <br>
+Compare count: 120 425 <br>
+Time: 15 <br>
 
-HeapSort
-Array access count: 788 838
-Compare count: 255 330
-Time: 17
+HeapSort<br>
+Array access count: 788 838<br>
+Compare count: 255 330 <br>
+Time: 17 <br>
 
-InsertionSort
-Array access count: 76 079 422
-Compare count: 50 116 377
-Time: 1004
+InsertionSort <br>
+Array access count: 76 079 422 <br>
+Compare count: 50 116 377 <br>
+Time: 1004 <br>
 
-SelectionSort
-Array access count: 100 019 998
-Compare count: 49 995 000
-Time: 1376
+SelectionSort <br>
+Array access count: 100 019 998 <br>
+Compare count: 49 995 000 <br>
+Time: 1376 <br>
 
-BubleSort
-Array access count: 150 682 436
-Compare count: 49 995 000
-Time: 2298
+BubleSort <br>
+Array access count: 150 682 436 <br>
+Compare count: 49 995 000 <br>
+Time: 2298 <br>
