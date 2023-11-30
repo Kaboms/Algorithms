@@ -3,6 +3,7 @@
 #include "Variable.h"
 //-----------------------------------------------------------------------------
 
+// For better testing
 template <typename T>
 class Array
 {
@@ -75,11 +76,11 @@ public:
 	}
 	//-----------------------------------------------------------------------------
 
+	size_t AccessCount;
+
 private:
 	T* Data;
 	size_t Size;
-
-	size_t AccessCount;
 };
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
@@ -98,6 +99,7 @@ static void Copy(Array<Variable<Ty>> source, Array<Variable<Ty>> dest, size_t fr
 		j++;
 	}
 }
+
 template <class Ty>
 static void Copy(Array<Variable<Ty>> source, Array<Variable<Ty>> dest)
 {

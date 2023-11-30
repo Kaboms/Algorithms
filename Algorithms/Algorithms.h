@@ -36,11 +36,11 @@ namespace Algorithms
 	namespace Sorting
 	{
 		template <class T>
-		void BubleSort(Array<Variable<T>> input, size_t size, const Predicate<T>& predicate = Less{})
+		void BubleSort(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
-			for (size_t i = 0; i < size; i++)
+			for (size_t i = 0; i < input.GetSize(); i++)
 			{
-				for (int j = size - 1; j > i; j--)
+				for (int j = input.GetSize() - 1; j > i; j--)
 				{
 					if (predicate(input[j], input[j - 1]))
 						std::swap(input[j], input[j - 1]);
@@ -50,12 +50,12 @@ namespace Algorithms
 		//-----------------------------------------------------------------------------
 
 		template <class T>
-		void SelectionSort(Array<Variable<T>> input, size_t size, const Predicate<T>& predicate = Less{})
+		void SelectionSort(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
-			for (size_t i = 0; i < size - 1; i++)
+			for (size_t i = 0; i < input.GetSize() - 1; i++)
 			{
 				int compare_index = i;
-				for (size_t j = i + 1; j < size; j++)
+				for (size_t j = i + 1; j < input.GetSize(); j++)
 				{
 					if (predicate(input[j], input[compare_index]))
 						compare_index = j;
@@ -66,9 +66,9 @@ namespace Algorithms
 		//-----------------------------------------------------------------------------
 
 		template <class T>
-		void InsertionSort(Array<Variable<T>> input, size_t size, const Predicate<T>& predicate = Less{})
+		void InsertionSort(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
-			for (size_t i = 1; i < size; i++)
+			for (size_t i = 1; i < input.GetSize(); i++)
 			{
 				int value = input[i];
 				int j = i - 1;
@@ -83,7 +83,7 @@ namespace Algorithms
 		//----------------------------------------------------------------------------
 
 		template <class T>
-		void Merge(Array<Variable<T>> input, size_t p, size_t q, size_t r, const Predicate<T>& predicate)
+		void Merge(Array<Variable<T>>& input, size_t p, size_t q, size_t r, const Predicate<T>& predicate)
 		{
 			size_t n1 = q - p + 1;
 			size_t n2 = r - q;
@@ -110,10 +110,12 @@ namespace Algorithms
 					j++;
 				}
 			}
+
+			input.AccessCount += l_array.AccessCount + r_array.AccessCount;
 		}
 
 		template <class T>
-		void MergeSort(Array<Variable<T>> input, size_t p, size_t r, const Predicate<T>& predicate = Less{})
+		void MergeSort(Array<Variable<T>>& input, size_t p, size_t r, const Predicate<T>& predicate = Less{})
 		{
 			if (p < r)
 			{
@@ -125,7 +127,7 @@ namespace Algorithms
 		}
 
 		template <class T>
-		void MergeSort(Array<Variable<T>> input, const Predicate<T>& predicate = Less{})
+		void MergeSort(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
 			MergeSort(input, 1, input.GetSize(), predicate);
 		}
@@ -136,7 +138,7 @@ namespace Algorithms
 #define PARENT(i) i / 2
 
 		template <class T>
-		void Heapify(Array<Variable<T>> input, int i, int heap_size, const Predicate<T>& predicate = Less{})
+		void Heapify(Array<Variable<T>>& input, int i, int heap_size, const Predicate<T>& predicate = Less{})
 		{
 			int left = LEFT(i);
 			int right = RIGHT(i);
@@ -156,7 +158,7 @@ namespace Algorithms
 		}
 
 		template <class T>
-		void BuildHeap(Array<Variable<T>> input, const Predicate<T>& predicate = Less{})
+		void BuildHeap(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
 			for (int i = input.GetSize() / 2; i >= 0; i--)
 			{
@@ -165,7 +167,7 @@ namespace Algorithms
 		}
 
 		template <class T>
-		void HeapSort(Array<Variable<T>> input, const Predicate<T>& predicate = Less{})
+		void HeapSort(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
 			int heap_size = input.GetSize();
 
@@ -180,7 +182,7 @@ namespace Algorithms
 		//-----------------------------------------------------------------------------
 
 		template <class T>
-		int Partition(Array<Variable<T>> input, int p, int r, const Predicate<T>& predicate = Less{})
+		int Partition(Array<Variable<T>>& input, int p, int r, const Predicate<T>& predicate = Less{})
 		{
 			T x = input[r];
 			int i = p - 1;
@@ -200,7 +202,7 @@ namespace Algorithms
 		}
 
 		template <class T>
-		int RandomizedPartition(Array<Variable<T>> input, int p, int r, const Predicate<T>& predicate = Less{})
+		int RandomizedPartition(Array<Variable<T>>& input, int p, int r, const Predicate<T>& predicate = Less{})
 		{
 			srand(time(NULL));
 
@@ -211,7 +213,7 @@ namespace Algorithms
 		}
 
 		template <class T>
-		void QuickSort(Array<Variable<T>> input, int p, int r, const Predicate<T>& predicate = Less{})
+		void QuickSort(Array<Variable<T>>& input, int p, int r, const Predicate<T>& predicate = Less{})
 		{
 			if (p < r)
 			{
@@ -222,7 +224,7 @@ namespace Algorithms
 			}
 		}
 		template <class T>
-		void RandomizedQuickSort(Array<Variable<T>> input, int p, int r, const Predicate<T>& predicate = Less{})
+		void RandomizedQuickSort(Array<Variable<T>>& input, int p, int r, const Predicate<T>& predicate = Less{})
 		{
 			if (p < r)
 			{
@@ -234,12 +236,12 @@ namespace Algorithms
 		}
 
 		template <class T>
-		void QuickSort(Array<Variable<T>> input, const Predicate<T>& predicate = Less{})
+		void QuickSort(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
 			QuickSort(input, 0, input.GetSize() - 1, predicate);
 		}		
 		template <class T>
-		void RandomizedQuickSort(Array<Variable<T>> input, const Predicate<T>& predicate = Less{})
+		void RandomizedQuickSort(Array<Variable<T>>& input, const Predicate<T>& predicate = Less{})
 		{
 			RandomizedQuickSort(input, 0, input.GetSize() - 1, predicate);
 		}
@@ -253,7 +255,7 @@ namespace Algorithms
 	namespace Search
 	{
 		template <class T>
-		long long LinearSearch(Array<Variable<T>> input, size_t size, T search_value)
+		long long LinearSearch(Array<Variable<T>>& input, size_t size, T search_value)
 		{
 			for (size_t i = 0; i < size; i++)
 			{
@@ -265,7 +267,7 @@ namespace Algorithms
 		//-----------------------------------------------------------------------------
 
 		template <class T>
-		long long RandomizedSelect(Array<Variable<T>> input, size_t p, size_t r, size_t i)
+		long long RandomizedSelect(Array<Variable<T>>& input, size_t p, size_t r, size_t i)
 		{
 			if (p == r)
 				return input[p];
@@ -282,14 +284,14 @@ namespace Algorithms
 
 		}
 		template <class T>
-		long long RandomizedSelect(Array<Variable<T>> input, size_t i)
+		long long RandomizedSelect(Array<Variable<T>>& input, size_t i)
 		{
 			return RandomizedSelect(input, 0, input.GetSize() - 1, i);
 		}
 		//-----------------------------------------------------------------------------
 
 		template <class T>
-		long long Min(Array<Variable<T>> input)
+		long long Min(Array<Variable<T>>& input)
 		{
 			T min = input[0];
 			for (size_t i = 1; i < input.GetSize(); i++)
